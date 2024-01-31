@@ -13,10 +13,11 @@ const Header = ()=>{
 }
 const styles = StyleSheet.create({
     container: {
-        height: 200,
+        height: 150,
         padding: 20,
         backgroundColor: constant.morado,
         borderEndEndRadius: 200,
+        borderBottomEndRadius:200, 
         justifyContent: "center"
     },
     text:{
