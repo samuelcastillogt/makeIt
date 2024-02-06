@@ -11,6 +11,7 @@ const Task = (props)=>{
                 </View>
                 <Text style={styles.descripcion}>{descripcion}</Text>
             </View>
+            
     )
 } 
 const styles = StyleSheet.create({
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
         width: "80%",
         height:150,
         borderRadius: 20,
-        margin: 5
+        margin: 5,
     },
     titleContainer:{
         backgroundColor: constant.amarillo,

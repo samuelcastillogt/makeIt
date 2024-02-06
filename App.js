@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SQLiteProvider, useSQLiteContext } from 'expo-sqlite/next';
 import { constant } from './utils/constants';
 import AddButton from './compornents/AddButton';
 import Header from './compornents/Header';
 import Task from './compornents/Task';
-
+import { migrateDbIfNeeded } from './db/db.controler';
 import { taskDummies } from './taskDummie';
 import Form from './compornents/Form';
+import TaskContainer from './compornents/TaskContainer';
+
 
 export default function App() {
   const [open, setOpen] = useState(false)
@@ -15,15 +18,19 @@ export default function App() {
     setOpen(!open)
   }
   return (
+    <>
+    <SQLiteProvider databaseName="test.db" onInit={migrateDbIfNeeded}>
+         <Header /> 
     <View style={styles.container}>
-      <Header />
-      <ScrollView style={styles.taskContainer}>
-      {taskDummies.map(item => <Task data={item} key={item.title}/>) }        
-      </ScrollView>
-      {open == true && <Form setOpen={modalManager}/>}
+    <TaskContainer />
+
+      {open == true && <Form setOpen={modalManager} tasks={taskDummies}/>}
       {open == false && <AddButton setOpen={modalManager}/>}
       
     </View>
+    </SQLiteProvider>
+    </>
+    
   );
 }
 
@@ -31,7 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: constant.blanco,
-    position: "relative"
+    position: "relative",
   },
   text: {
     color: constant.text,
@@ -39,7 +46,7 @@ const styles = StyleSheet.create({
   },
   taskContainer:{
     display: "flex",
-    width: "100%",
-    alignContent: "center"
+    // width: "100%",
+    // alignContent: "center",
   }
 });
