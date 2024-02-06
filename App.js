@@ -20,9 +20,9 @@ export default function App() {
   return (
     <>
     <SQLiteProvider databaseName="test.db" onInit={migrateDbIfNeeded}>
-         <Header /> 
+         <Header open={open}/> 
     <View style={styles.container}>
-    <TaskContainer />
+    <TaskContainer open={open}/>
 
       {open == true && <Form setOpen={modalManager} tasks={taskDummies}/>}
       {open == false && <AddButton setOpen={modalManager}/>}

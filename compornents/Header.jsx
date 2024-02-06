@@ -3,23 +3,25 @@ import { useSQLiteContext } from 'expo-sqlite/next';
 import { View, Text, Image, StyleSheet } from "react-native";
 import { constant } from "../utils/constants";
 import moment from "moment";
-const Header = ()=>{
+const Header = (props)=>{
+    const {open} = props
     const db = useSQLiteContext();
-     async function setup() {
+    async function setup() {
         try {
             await db.execAsync(`
             PRAGMA journal_mode = WAL;
             CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY NOT NULL, title TEXT, descripcion TEXT);
-        `);
-        const firstRow = await db.getAllAsync('SELECT * FROM test')
-        console.log(firstRow)   
+        `);  
         } catch (error) {
             console.log(error)
         }
       }
-    useEffect(() => {
-     
-      setup();
+
+      useEffect(() => {
+        if(open == true){
+            setup();            
+        }
+
     }, []);
     return(
         <>

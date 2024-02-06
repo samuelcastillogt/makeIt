@@ -61,7 +61,7 @@ const Form =(props)=>{
 }
 const styles = StyleSheet.create({
     container: {
-        height: "50%",
+        height: "80%",
         zIndex: 9999,
         borderTopRightRadius: 30,
         borderTopLeftRadius: 30,
