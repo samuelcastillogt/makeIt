@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useSQLiteContext } from 'expo-sqlite/next';
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, Dimensions, Button, TextInput } from "react-native";
 import { constant } from "../utils/constants";
 import moment from "moment";
 const Header = (props)=>{
@@ -10,23 +10,30 @@ const Header = (props)=>{
         try {
             await db.execAsync(`
             PRAGMA journal_mode = WAL;
-            CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY NOT NULL, title TEXT, descripcion TEXT);
+            CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY NOT NULL, title TEXT, descripcion TEXT, date TEXT, time TEXT, type TEXT);
         `);  
+        
+            await db.execAsync(`
+            PRAGMA journal_mode = WAL;
+            CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY NOT NULL, pass TEXT);
+        `);  
+    //     await db.execAsync(`
+    //     PRAGMA journal_mode = WAL;
+    //     DROP TABLE test;
+    // `); 
         } catch (error) {
             console.log(error)
         }
       }
 
       useEffect(() => {
-        if(open == true){
             setup();            
-        }
-
     }, []);
     return(
         <>
             <View style={styles.container}>
-                <Text style={styles.text}>Hola {moment(new Date()).format("DD/MM/YYYY")}</Text>
+                
+                <Text style={styles.text}>Hola, hoy es {moment(new Date()).format("DD/MM/YYYY")} y es un buen dia para escribir...</Text>
             </View>
         </>
     )
@@ -36,14 +43,14 @@ const styles = StyleSheet.create({
         height: 100,
         padding: 20,
         backgroundColor: constant.morado,
-        borderEndEndRadius: 200,
         borderBottomEndRadius:200, 
         justifyContent: "center"
     },
     text:{
-        fontSize: constant.titleSize,
+        fontSize: 20,
         fontWeight: "bold",
-        color: constant.text
+        color: constant.text,
+        padding: 0
     }
 })
 export default Header

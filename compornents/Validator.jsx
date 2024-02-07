@@ -1,0 +1,84 @@
+import React, { useEffect, useState } from "react";
+import { Button, Text, TextInput, View, StyleSheet, Dimensions } from "react-native";
+import { useSQLiteContext } from 'expo-sqlite/next';
+import { constant } from "../utils/constants";
+const Validator = ()=>{
+        const db = useSQLiteContext();
+        const [user, setUser]= useState()
+        const [toValidate, setToValidate] = useState()
+        const [pass, setPass]= useState()
+        const [otherPass, setOtherPass] = useState()     
+    const validateUser = async()=>{
+        const firstRow = await db.getAllAsync('SELECT * FROM user')
+        if(firstRow.length == 0){
+            setUser(false)
+        }else{
+            setUser(false)
+            setToValidate(firstRow[0].pass)
+        }
+      }
+      const createUser = async()=>{
+
+        if(pass == otherPass){
+            await db.runAsync(`INSERT INTO user (pass) VALUES (?)`, pass)
+            setUser(true)
+        }else{
+            alert("Las contraseñas no coinciden")
+        }
+      }
+      const validate = ()=>{
+        if(pass != toValidate){
+            alert("Error en la contaseña :S ")
+        }else{
+            setUser(true)
+        }
+      }
+      useEffect(()=>{
+        validateUser()
+      }, [])
+    return(
+        <View style={user == false ? styles.verificator : styles.hidden}>
+            {
+                user != undefined && user == false && toValidate == undefined &&
+                <>
+                    <TextInput placeholder="Crear contraseña" style={styles.input} onChange={e => setPass(e.nativeEvent.text)}/>
+                    <TextInput placeholder="Confirmar contraseña"  style={styles.input} onChange={e => setOtherPass(e.nativeEvent.text)}/>
+                    <Button title="Crear Contraseña" onPress={createUser} disabled={pass && pass.length == 0 && otherPass && otherPass.length == 0? true : false}/>
+                </>
+            }
+            {
+                user != undefined && user == false && toValidate != undefined && 
+                <>
+                    <TextInput placeholder="Contraseña" style={styles.input} onChange={e => setPass(e.nativeEvent.text)}/>
+                    
+                    <Button title="Verificar" onPress={validate} disabled={pass && pass.length == 0 && otherPass && otherPass.length == 0? true : false}/>
+                </>
+            }
+        </View>
+    )
+}
+const styles = StyleSheet.create({
+    verificator:{
+        backgroundColor: constant.amarillo,
+        height: Dimensions.get("window").height,
+        width: Dimensions.get("screen").width,
+        zIndex: 999999999999999,
+        position: "absolute",
+        top: 0,
+        flexDirection: "column",
+        justifyContent: "center", 
+        alignItems: "center"
+    },
+    input: {
+        backgroundColor: "white",
+        padding: 20,
+        margin: 10,
+        width: "70%",
+        borderRadius: 20,
+        fontSize: 20
+    },
+    hidden:{
+        display: "none"
+    }
+})
+export default Validator

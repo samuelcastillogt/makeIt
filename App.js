@@ -10,6 +10,7 @@ import { migrateDbIfNeeded } from './db/db.controler';
 import { taskDummies } from './taskDummie';
 import Form from './compornents/Form';
 import TaskContainer from './compornents/TaskContainer';
+import Validator from './compornents/Validator';
 
 
 export default function App() {
@@ -26,7 +27,7 @@ export default function App() {
 
       {open == true && <Form setOpen={modalManager} tasks={taskDummies}/>}
       {open == false && <AddButton setOpen={modalManager}/>}
-      
+      <Validator />
     </View>
     </SQLiteProvider>
     </>

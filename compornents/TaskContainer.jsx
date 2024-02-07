@@ -10,7 +10,6 @@ const TaskContainer = (props)=>{
     async function getAllTasks() {
        try {
        const firstRow = await db.getAllAsync('SELECT * FROM test')
-       console.log(firstRow)
        setTasks(firstRow)   
        } catch (error) {
            console.log(error)
@@ -21,7 +20,7 @@ const TaskContainer = (props)=>{
    }, [open]);
    return(
     <ScrollView style={styles.taskContainer} contentContainerStyle={{ justifyContent: 'center', alignItems: "center", elevation:10 }}>
-    {tasks && tasks.length > 0 && tasks.map(item => <Task data={item} key={item.id}/>) }
+    {tasks && tasks.length > 0 && tasks.map(item => <Task data={item} key={item.id} getAllTasks={getAllTasks}/>) }
     {tasks && tasks.length == 0 && <Empty />}        
     </ScrollView>
    )
