@@ -47,8 +47,9 @@ const Form =(props)=>{
             />
             <TextInput 
                 placeholder="Descripcion"
-                style={styles.input}
+                style={[styles.input, styles.textArea]}
                 onChange={(e)=> setDesc(e.nativeEvent.text)}
+                multiline
             />
             <View style={{margin: 20}}>
               <RNPickerSelect
@@ -99,6 +100,10 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 10,
         backgroundColor: "white"
+    },
+    textArea:{
+        textAlignVertical: "top",
+        height: 200
     },
     closeButton:{
         position: "absolute",

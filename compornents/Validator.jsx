@@ -52,7 +52,7 @@ const Validator = ()=>{
                 <>
                     <TextInput placeholder="Contraseña" style={styles.input} secureTextEntry={true} onChange={e => setPass(e.nativeEvent.text)}/>
                     
-                    <Button title="Verificar" onPress={validate} disabled={pass && pass.length == 0 && otherPass && otherPass.length == 0? true : false}/>
+                    <Button title="Verificar" onPress={validate} disabled={pass && pass.length >= 4 ? false : true}/>
                 </>
             }
         </View>
