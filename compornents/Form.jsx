@@ -80,6 +80,7 @@ const Form =(props)=>{
 }
 const styles = StyleSheet.create({
     container: {
+        width: 350,
         height: "auto",
         zIndex: 9999,
         borderTopRightRadius: 30,
@@ -88,14 +89,16 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         justifyContent: "center",
         alignItems: "center",
-        padding: 50
+        padding: 50,
+        backgroundColor: constant.amarillo
     },
     input: {
         borderWidth: 1,
         padding: 20,
         width: "90%",
         margin: 10,
-        borderRadius: 10
+        borderRadius: 10,
+        backgroundColor: "white"
     },
     closeButton:{
         position: "absolute",

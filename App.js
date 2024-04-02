@@ -11,24 +11,14 @@ import { taskDummies } from './taskDummie';
 import Form from './compornents/Form';
 import TaskContainer from './compornents/TaskContainer';
 import Validator from './compornents/Validator';
+import Init from './pages/Init';
 
 
 export default function App() {
-  const [open, setOpen] = useState(false)
-  const modalManager =()=>{
-    setOpen(!open)
-  }
   return (
     <>
     <SQLiteProvider databaseName="test.db" onInit={migrateDbIfNeeded}>
-         <Header open={open}/> 
-    <View style={styles.container}>
-    <TaskContainer open={open}/>
-
-      {open == true && <Form setOpen={modalManager} tasks={taskDummies}/>}
-      {open == false && <AddButton setOpen={modalManager}/>}
-      <Validator />
-    </View>
+      <Init />
     </SQLiteProvider>
     </>
     

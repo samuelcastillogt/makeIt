@@ -28,7 +28,9 @@ const TaskContainer = (props)=>{
 }
 const styles = StyleSheet.create({
     taskContainer:{
-        display: "flex",
+        flex: 1,
+        width: "100%"
+
         // width: "100%",
         // alignContent: "center",
       },

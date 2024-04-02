@@ -8,7 +8,7 @@ const AddButton = (props)=>{
     return(
         <>
             <View style={styles.container}>
-                <TouchableNativeFeedback onPress={setOpen}>
+                <TouchableNativeFeedback onPress={setOpen} style={styles.container}>
                 <Ionicons name="add-circle" size={70} color={constant.rosado} />
                 </TouchableNativeFeedback>
             </View>
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     container: {
         position: "absolute",
         bottom: 20,
-        // borderRadius: "100%",
+        borderRadius: "100%",
         right: 10,
         elevation: 10,
         zIndex: 90000

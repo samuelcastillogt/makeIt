@@ -5,30 +5,7 @@ import { constant } from "../utils/constants";
 import moment from "moment";
 const Header = (props)=>{
     const {open} = props
-    const db = useSQLiteContext();
-    async function setup() {
-        try {
-            await db.execAsync(`
-            PRAGMA journal_mode = WAL;
-            CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY NOT NULL, title TEXT, descripcion TEXT, date TEXT, time TEXT, type TEXT);
-        `);  
-        
-            await db.execAsync(`
-            PRAGMA journal_mode = WAL;
-            CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY NOT NULL, pass TEXT);
-        `);  
-    //     await db.execAsync(`
-    //     PRAGMA journal_mode = WAL;
-    //     DROP TABLE test;
-    // `); 
-        } catch (error) {
-            console.log(error)
-        }
-      }
-
-      useEffect(() => {
-            setup();            
-    }, []);
+    
     return(
         <>
             <View style={styles.container}>
