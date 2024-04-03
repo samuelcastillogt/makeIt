@@ -51,8 +51,8 @@ const Form =(props)=>{
                 onChange={(e)=> setDesc(e.nativeEvent.text)}
                 multiline
             />
-            <View style={{margin: 20}}>
-              <RNPickerSelect
+            {/* <View style={{margin: 20}}>
+              {/* <RNPickerSelect
                         placeholder={{
                             label: 'Selecciona el tipo de tarea',
                             value: null,
@@ -65,17 +65,17 @@ const Form =(props)=>{
                 { label: 'Baseball', value: 'baseball', key: 2 },
                 { label: 'Hockey', value: 'hockey', key: 3 },
             ]}
-        />  
-            </View>
+        />   
+            </View> */}
             
             
-            {
+            {/* {
                 date != undefined && <Text style={styles.title}>{date}</Text> || <DateTimePicker  value={new Date()} mode="date" onChange={handleDate}/>
-            }
+            } */}
                         {/* {
                 time != undefined && <Text style={styles.title}>{time}</Text> || <DateTimePicker  value={new Date()} mode="time" onChange={handleTime}/>
             } */}
-            <Button title="Registrar Tarea" onPress={saveTask} color="green"/>
+            <Button title="Registrar Nota" onPress={saveTask} color="green" disabled={desc && desc.length > 5 ? false : true}/>
         </View>
     )
 }

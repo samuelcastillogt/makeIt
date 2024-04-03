@@ -38,8 +38,8 @@ const Task = (props)=>{
                     <View style={styles.titleContainer}>
                    <Text style={styles.title}>{title}</Text> 
                 </View>
-                <Text style={styles.descripcion}>{descripcion}</Text>
-                <Text style={styles.date}>{date}</Text>
+                <Text style={styles.descripcion}>{open == true ? descripcion : descripcion.slice(0, descripcion.length /3 )}</Text>
+                {/* <Text style={styles.date}>{date}</Text> */}
                 {/* <Text>{parseTime}</Text>   */}
                 <AntDesign name="delete" 
                            size={24} 
@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     },
     descripcion:{
         padding: 20,
-        marginBottom: 50
+        marginBottom: 50,
+        fontSize: 20
     },
     deleteIcon:{
         margin: 10,
