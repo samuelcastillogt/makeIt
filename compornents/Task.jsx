@@ -17,11 +17,9 @@ const Task = (props)=>{
         }          
     }
     useEffect(()=>{
-        console.log(time)
         if(time != undefined){
        var h = new Date(time).getHours();
         var m = new Date(time).getMinutes();
-        console.log(h)
         h = (h<10) ? '0' + h : h;
         m = (m<10) ? '0' + m : m;
         var output = h + ':' + m;

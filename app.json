@@ -23,7 +23,7 @@
         "backgroundColor": "#e6ac17"
       },
       "package": "com.samuelcastillo.makeIt",
-      "versionCode": 2
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/favicon.png"

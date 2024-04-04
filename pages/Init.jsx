@@ -26,6 +26,7 @@ const Init = () => {
     //     await db.execAsync(`
     //     PRAGMA journal_mode = WAL;
     //     DROP TABLE test;
+    //     DROP TABLE user;
     // `); 
         } catch (error) {
             console.log(error)
@@ -35,9 +36,16 @@ const Init = () => {
       useEffect(() => {
             setup();            
     }, []);
+    const resetData = async()=>{
+                await db.execAsync(`
+        PRAGMA journal_mode = WAL;
+        DROP TABLE test;
+        DROP TABLE user;
+    `); 
+    }
   return (
     <View style={styles.container}>
-      <Validator />
+      <Validator resetData={resetData}/>
       <TaskContainer open={open}/>
       {
         open == false && <AddButton setOpen={modalManager}/> || <Form setOpen={modalManager}/>

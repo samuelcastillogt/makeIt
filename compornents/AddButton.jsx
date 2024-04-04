@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     container: {
         position: "absolute",
         bottom: 20,
-        borderRadius: "100%",
+        // borderRadius: "100%",
         right: 10,
         elevation: 10,
         zIndex: 90000
