@@ -52,7 +52,7 @@ const Validator = (props)=>{
                 <Text style={styles.title}>Registra tu contraseña</Text>
                     <TextInput placeholder="Crear contraseña" style={styles.input} onChange={e => setPass(e.nativeEvent.text)}/>
                     <TextInput placeholder="Confirmar contraseña"  style={styles.input} onChange={e => setOtherPass(e.nativeEvent.text)}/>
-                    <Button title="Crear Contraseña" onPress={createUser} disabled={pass && pass.length == 0 && otherPass && otherPass.length == 0? true : false}/>
+                    <Button title="Crear Contraseña" onPress={createUser} disabled={pass && pass.length == 0 && otherPass && otherPass.length == 0 ? true : false}/>
                 </>
             }
             {
