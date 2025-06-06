@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { StyleSheet, View, Text, TextInput, Button } from "react-native";
+import { StyleSheet, View, Text, TextInput, Button, Dimensions } from "react-native";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import RNPickerSelect from 'react-native-picker-select'
 import { AntDesign } from '@expo/vector-icons';
@@ -83,15 +83,23 @@ const styles = StyleSheet.create({
     container: {
         width: 350,
         height: "auto",
+        position: "absolute",
+        top: 200,
         zIndex: 9999,
         borderTopRightRadius: 30,
         borderTopLeftRadius: 30,
+        borderBottomRightRadius: 30,
+        borderBottomLeftRadius: 30,
+        borderStyle: "solid",
         borderColor: "black",
         borderWidth: 2,
         justifyContent: "center",
         alignItems: "center",
         padding: 50,
-        backgroundColor: constant.amarillo
+        backgroundColor: constant.amarillo,
+        shadowColor: "#000",
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+        elevation: 5,
     },
     input: {
         borderWidth: 1,

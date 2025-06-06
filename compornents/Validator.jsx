@@ -45,7 +45,7 @@ const Validator = (props)=>{
       }, [count])
     return(
         <View style={user == false ? styles.verificator : styles.hidden}>
-            <Image source={require("../assets/980496.png")} style={styles.image} />
+            <Image source={require("../assets/1.png")} style={styles.image} />
             {
                 user != undefined && user == false && toValidate == undefined &&
                 <>
